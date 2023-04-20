@@ -44,9 +44,9 @@ public abstract class BaseNCodec implements BinaryEncoder, BinaryDecoder {
 
     /**
      * Holds thread context so classes can be thread-safe.
-     *
+     * <p>
      * This class is not itself thread-safe; each thread must allocate its own copy.
-     *
+     *</p>
      * @since 1.7
      */
     static class Context {
@@ -226,15 +226,10 @@ public abstract class BaseNCodec implements BinaryEncoder, BinaryDecoder {
      * @return true if byte is whitespace, false otherwise
      */
     protected static boolean isWhiteSpace(final byte byteToCheck) {
-        switch (byteToCheck) {
-            case ' ' :
-            case '\n' :
-            case '\r' :
-            case '\t' :
-                return true;
-            default :
-                return false;
-        }
+        return switch (byteToCheck) {
+            case ' ', '\n', '\r', '\t' -> true;
+            default -> false;
+        };
     }
 
     /**

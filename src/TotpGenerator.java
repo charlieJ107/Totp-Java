@@ -45,7 +45,7 @@ public class TotpGenerator {
      * This method generates a TOTP value for the given
      * set of parameters.
      *
-     * @param key:          the shared secret, HEX encoded
+     * @param key:          the shared secret byte array
      * @param time:         a value that reflects a time
      * @param codeDigits: number of digits to return
      * @param crypto:       the crypto function to use

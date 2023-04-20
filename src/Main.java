@@ -10,6 +10,16 @@ public class Main {
         System.out.println(encoded);
         var decoded = base32.decode(encoded);
         System.out.println(decoded);
-
+        while (true) {
+            var time = System.currentTimeMillis() / 1000 / 30;
+            var totp = TotpGenerator.generateTOTP(decoded, time, 6, "HmacSHA1");
+            System.out.println(totp);
+            try {
+                Thread.sleep(1000 * 10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                break;
+            }
+        }
     }
 }
